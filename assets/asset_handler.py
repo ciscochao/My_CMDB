@@ -1,9 +1,9 @@
 # coding=utf-8
 """
-# @Time    : 9/16/19 2:59 PM
+# @Time    : 9/17/19 4:12 PM
 # @Author  : F0rGeEk@root
 # @Email   : bat250@protonmail.com
-# @File    : info_collection.py
+# @File    : asset_handler.py
 # @Software: PyCharm
 ***********************************************************
 ███████╗ ██████╗ ██████╗  ██████╗ ███████╗███████╗██╗  ██╗
@@ -14,37 +14,30 @@
 ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝
 ***********************************************************
 """
-import sys
-import platform
+import json
+from assets import models
 
 
-class InfoCollection(object):
-    # 判断当前平台，根据不同平台选择不同方法进行信息收集
-    def collect(self):
-        try:
-            func = getattr(self, platform.system().lower())
-            info_data = func()
-            formatted_data = self.build_report_data(info_data)
-            return formatted_data
-        except AttributeError:
-            sys.exit("不支持当前操作系统: [%s]!" % platform.system())
+class NewAsset(object):
+    def __init__(self, request, data):
+        self.request = request
+        self.data = data
 
-    @staticmethod
-    def linux():
-        from Client.plugins.collect_linux_info import collect
-        return collect()
+    def add_to_new_assets_zone(self):
+        defaults = {
+            'data': json.dumps(self.data),
+            'asset_type': self.data.get('asset_type'),
+            'manufacturer': self.data.get('manufacturer'),
+            'model': self.data.get('model'),
+            'ram_size': self.data.get('ram_size'),
+            'cpu_model': self.data.get('cpu_model'),
+            'cpu_count': self.data.get('cpu_count'),
+            'cpu_core_count': self.data.get('cpu_core_count'),
+            'os_distribution': self.data.get('os_distribution'),
+            'os_type': self.data.get('os_type'),
+            'os_release': self.data.get('os_release'),
+        }
+        models.NewAssetApprovalZone.objects.update_or_create(sn=self.data['sn'], defaults=defaults)
 
-    @staticmethod
-    def windows():
-        from Client.plugins.collect_windows_info import collect
-        return collect()
-
-    @staticmethod
-    def build_report_data(self, data):
-        pass
-        return data
-
-    def build_report_data(self, data):
-        pass
-        return data
+        return '资产已经加入或更新待审批区！'
 

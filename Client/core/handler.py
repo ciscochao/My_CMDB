@@ -18,8 +18,8 @@ import json
 import time
 import urllib.parse
 import urllib.request
-from . import info_collection
-from ..conf import settings
+from Client.core import info_collection
+from Client.conf import settings
 
 
 class ArgvHandler(object):
@@ -80,6 +80,7 @@ class ArgvHandler(object):
             print("\033[31;1m发送失败！错误原因： %s\033[0m " % e)
 
         # 记录日志
+        # with open(settings.PATH, 'ab') as f:
         with open(settings.PATH, 'ab') as f:
             log = '发送时间： %s \t 服务器地址: %s \t 返回结果：%s \n' % (time.strftime('%Y-%m-%d %H-%M-%S'), url, message)
             f.write(log.encode())

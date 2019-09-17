@@ -44,7 +44,11 @@ def collect():
     col_data['uuid'] = raw_data['UUID']
     col_data['wake_up_type'] = raw_data['wake-up Type']
 
-    col_data.update()
+    col_data.update(get_cpu_info())
+    col_data.update(get_disk_info())
+    col_data.update(get_nic_info())
+    col_data.update(get_os_info())
+    col_data.update(get_ram_info())
 
     return col_data
 

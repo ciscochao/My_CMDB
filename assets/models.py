@@ -88,7 +88,7 @@ class Server(models.Model):
         verbose_name_plural = "服务器"
 
 
-class SecurityDivice(models.Model):
+class SecurityDevice(models.Model):
     """安全设备"""
     sub_asset_type_choice = (
         (0, 'Firewall'),
