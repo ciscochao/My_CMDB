@@ -16,7 +16,7 @@
 """
 import os
 import sys
-from ..core import handler
+from Client.core import handler
 
 
 BASE_DIR = os.path.dirname(os.getcwd())
