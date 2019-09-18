@@ -29,7 +29,7 @@ def report(request):
             # 进入审批流程，判断是否是在线的资产
             asset_obj = models.Asset.objects.filter(sn=sn)
             if asset_obj:  # 如果是在线的SN，那么更新该资产的数据
-                pass
+                update_asset = asset_handler.UpdateAsset(request, asset_obj[0], data)
                 return HttpResponse("已更新资产数据！")
             else:  # 如果不是在线的资产则新增资产
                 obj = asset_handler.NewAsset(request, data)
@@ -37,4 +37,5 @@ def report(request):
                 return HttpResponse(response)
         else:
             return HttpResponse("没有资产SN号，请查验数据完整性！")
-        return HttpResponse('200 ok')
+
+    return HttpResponse('200 ok')
