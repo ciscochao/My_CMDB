@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import get_object_or_404
 import json
 from assets import models
 from assets import asset_handler
@@ -39,3 +40,18 @@ def report(request):
             return HttpResponse("没有资产SN号，请查验数据完整性！")
 
     return HttpResponse('200 ok')
+
+
+def index(request):
+    asset = models.Asset.objects.all()
+    return render(request, 'assets/index.html', locals())
+
+
+def dashboard(request):
+    pass
+    return render(request, 'assets/dashborad.html', locals())
+
+
+def detail(request, asset_id):
+    asset = get_object_or_404(models.Asset, id=asset_id)
+    return render(request, 'assets/detail.html', locals())

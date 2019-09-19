@@ -2,5 +2,4 @@
 venv
 .idea
 settings.py
-db.sqlite3
 My_CMDB/__pycache__/

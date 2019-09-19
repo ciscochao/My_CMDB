@@ -80,7 +80,7 @@ class Server(models.Model):
     os_release = models.CharField('操作系统版本', max_length=64, blank=True, null=True)
 
     def __str__(self):
-        return '%s--%s--%s-- <asset_sn:%s>' % (self.asset.name, self.get_sub_asset_type_display(2),
+        return '%s--%s--%s-- <asset_sn:%s>' % (self.asset.name, self.get_sub_asset_type_display(),
                                                self.model, self.asset.sn)
 
     class Meta:
