@@ -66,7 +66,7 @@ desired effect
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>I·M·U</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>I·M·U</b>DevOps</span>
+      <span class="logo-lg"><b>I·M·U</b> DevOps</span>
     </a>
 
     <!-- Header Navbar -->
@@ -468,21 +468,70 @@ desired effect
       <!-- Stats tab content -->
       <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
       <!-- /.tab-pane -->
-      <!-- Settings tab content -->
+<!-- Settings tab content -->
       <div class="tab-pane" id="control-sidebar-settings-tab">
         <form method="post">
-          <h3 class="control-sidebar-heading">常规设置</h3>
+          <h3 class="control-sidebar-heading">General Settings</h3>
 
           <div class="form-group">
             <label class="control-sidebar-subheading">
-{#              Report panel usage#}
-                记录cookies
+              Report panel usage
               <input type="checkbox" class="pull-right" checked>
             </label>
 
             <p>
               Some information about this general settings option
             </p>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Allow mail redirect
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+
+            <p>
+              Other sets of options are available
+            </p>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Expose author name in posts
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+
+            <p>
+              Allow the user to show his name in blog posts
+            </p>
+          </div>
+          <!-- /.form-group -->
+
+          <h3 class="control-sidebar-heading">Chat Settings</h3>
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Show me as online
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Turn off notifications
+              <input type="checkbox" class="pull-right">
+            </label>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Delete chat history
+              <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+            </label>
           </div>
           <!-- /.form-group -->
         </form>
@@ -492,7 +541,7 @@ desired effect
   </aside>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
-  immediately after the control sidebar -->
+       immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
@@ -501,22 +550,49 @@ desired effect
 
 <!-- jQuery 3 -->
 <script src="{% static 'AdminLet/bower_components/jquery/dist/jquery.min.js' %}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{% static 'AdminLet/bower_components/jquery-ui/jquery-ui.min.js' %}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{% static 'AdminLet/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<!-- FastClick -->
+<script src="{% static 'AdminLet/bower_components/fastclick/lib/fastclick.js' %}"></script>
 <!-- AdminLTE App -->
 <script src="{% static 'AdminLet/dist/js/adminlte.min.js' %}"></script>
+<!-- Sparkline -->
+<script src="{% static 'AdminLet/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js' %}"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
 {% block script %}{% endblock %}
+{#<script>#}
+{#    $('ul.sidebar-menu li').each(function(i){#}
+{#        if($(this).children().first().attr('href')==='{{ request.path }}'){#}
+{#            $(this).addClass('active');#}
+{#        }else{#}
+{#        }#}
+{#    });#}
+{#</script>#}
+
 <script>
-    $('ul.sidebar-menu li').each(function(i){
-        if($(this).children().first().attr('href')==='{{ request.path }}'){
-            $(this).addClass('active');
-        }else{
-        }
+    $(function(){
+        $('.sidebar-menu li:not(.treeview) > a').on('click', function(){
+            console.log(this.href);
+            var $parent = $(this).parent().addClass('active');
+            $parent.siblings('.treeview.active').find('> a').trigger('click');
+            $parent.siblings().removeClass('active').find('li').removeClass('active');
+        });
+        $('.sidebar-menu a').each(function(){
+            if(this.href === window.location.href){
+                $(this).parent().addClass('active')
+                        .closest('.treeview-menu').addClass('.menu-open')
+                        .closest('.treeview').addClass('active');
+            }
+        });
+
+
     });
 </script>
+
 </body>
 </html>

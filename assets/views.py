@@ -43,12 +43,28 @@ def report(request):
 
 
 def index(request):
-    asset = models.Asset.objects.all()
+    assets = models.Asset.objects.all()
     return render(request, 'assets/index.html', locals())
 
 
 def dashboard(request):
-    pass
+    total = models.Asset.objects.count()
+    upline = models.Asset.objects.filter(status=0).count()
+    offline = models.Asset.objects.filter(status=1).count()
+    unknown = models.Asset.objects.filter(status=2).count()
+    breakdown = models.Asset.objects.filter(status=3).count()
+    backup = models.Asset.objects.filter(status=4).count()
+    up_rate = round(upline / total * 100)
+    o_rate = round(offline / total * 100)
+    un_rate = round(unknown / total * 100)
+    bd_rate = round(breakdown / total * 100)
+    bu_rate = round(backup / total * 100)
+    server_number = models.Server.objects.count()
+    networkdevice_number = models.NetworkDevice.objects.count()
+    storagedevice_number = models.StorageDevice.objects.count()
+    securitydevice_number = models.SecurityDevice.objects.count()
+    software_number = models.SoftWare.objects.count()
+
     return render(request, 'assets/dashborad.html', locals())
 
 

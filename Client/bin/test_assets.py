@@ -54,12 +54,12 @@ def update_test(data):
 if __name__ == '__main__':
     windows_data = {
         "os_type": "Windows",
-        "os_release": "10 64bit 1903",
+        "os_release": "2018 64bit R2",
         "os_distribution": "Microsoft",
         "asset_type": "server",
-        "cpu_count": 6,
-        "cpu_model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
-        "cpu_core_count": 24,
+        "cpu_count": 8,
+        "cpu_model": "Intel(R) Core(TM) i7-9750H CPU @ 2.80GHz",
+        "cpu_core_count": 32,
         "ram": [
             {
                 "slot": "A1",
@@ -70,18 +70,18 @@ if __name__ == '__main__':
             },
 
         ],
-        "manufacturer": "LENOVO",
-        "model": "Y9000K 2019SE",
-        "wake_up_type": 4,
-        "sn": "33333-OEM-8992662-133322",
+        "manufacturer": "Dell inc.",
+        "model": "Y9320K 2019",
+        "wake_up_type": 3,
+        "sn": "31233-OEM-8992662-1321122",
         "physical_disk_driver": [
             {
                 "iface_type": "unknown",
                 "slot": 0,
-                "sn": "34567899876543456787654334566544",
+                "sn": "34567899234456276543234234566544",
                 "model": "SAMSUNG SV100S264G ATA Device",
                 "manufacturer": "(标准磁盘驱动器)",
-                "capacity": 256
+                "capacity": 1024
             },
             {
                 "iface_type": "SATA",
@@ -95,30 +95,30 @@ if __name__ == '__main__':
         ],
         "nic": [
             {
-                "mac": "14:CF:22:EF:33:33",
+                "mac": "14:CF:22:EF:33:12",
                 "model": "[00000033] Realtek RTL8192CU Wireless LAN 802.11n USB 2.0 Network Adapter",
-                "name": 33,
-                "ip_address": "10.8.8.88",
+                "name": 14,
+                "ip_address": "10.8.8.14",
                 "net_mask": [
                     "255.255.255.0",
                     "64"
                 ]
             },
             {
-                "mac": "0A:01:33:33:00:00",
+                "mac": "0A:01:33:33:00:14",
                 "model": "[00000333] VmWare WorkStation Host-Only Ethernet Adapter",
-                "name": 23,
-                "ip_address": "192.168.56.13",
+                "name": 24,
+                "ip_address": "192.168.56.14",
                 "net_mask": [
                     "255.255.255.0",
                     "64"
                 ]
             },
             {
-                "mac": "14:CF:22:FF:48:33",
+                "mac": "14:CF:22:FF:48:14",
                 "model": "Intel Adapter",
-                "name": 17,
-                "ip_address": "192.1.1.1",
+                "name": 14,
+                "ip_address": "192.1.1.14",
                 "net_mask": ""
             },
 
@@ -129,9 +129,9 @@ if __name__ == '__main__':
     linux_data = {
         "asset_type": "server",
         "manufacturer": "IBM.",
-        "sn": "F3LN113",
-        "model": "K1 Power S922",
-        "uuid": "4c4c4544-0039-4c10-804e-c6c04f333333",
+        "sn": "F3LN110",
+        "model": "K1 Power S930",
+        "uuid": "4c4c4523-0039-4d20-804e-c6c2wwe31",
         "wake_up_type": "Power Switch",
         "os_distribution": "Ubuntu",
         "os_release": "Ubuntu 16.04.4 LTS",
@@ -142,19 +142,19 @@ if __name__ == '__main__':
         "ram": [
             {
                 "slot": "A1",
-                "capacity": 128,
+                "capacity": 64,
                 "model": "Physical Memory",
                 "manufacturer": "IBM",
-                "sn": "666666"
+                "sn": "623466"
             }
         ],
-        "ram_size": 63.528997344970703,
+        "ram_size": 63.538997344970703,
         "nic": [],
         "physical_disk_driver": [
             {
-                "model": "ST1033LM035-1RK001",
-                "size": "931.53",
-                "sn": "WL109C33"
+                "model": "ST1033LM035-1RK015",
+                "size": "1024",
+                "sn": "WL109C15"
             }
         ]
     }
